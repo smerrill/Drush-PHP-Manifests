@@ -13,6 +13,12 @@ class drush {
     require => Exec["download_drush"],
   }
   
+  exec { "remove_tar":
+    cwd => "/bin",
+    command => "/bin/rm /bin/drush-7.x-4.4.tar.gz",
+    require => [ Exec["download_drush"], Exec["unpack_drush"] ],
+  }
+  
   exec { "install_drush":
     cwd => "/bin",
     command => "/bin/mv drush/ /opt/",
