@@ -4,6 +4,7 @@ class php {
   }
   
   exec { "console_table":
+    creates => "/usr/share/pear/Console/Table.php",
     command => "/usr/bin/pear install Console_Table",
     require => Package["php-pear"],
   }
