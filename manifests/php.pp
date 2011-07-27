@@ -4,6 +4,7 @@ class php {
   }
   
   exec { "console_table":
+    unless => "/usr/bin/pear list | /bin/grep Console_Table",
     command => "/usr/bin/pear install Console_Table",
     require => Package["php-pear"],
   }
